@@ -1,0 +1,276 @@
+/* ====== RESET Y BOX-SIZING ====== */
+*{ 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ====== BODY ====== */
+body {
+  font-family: 'Comic Sans', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ====== HEADER ====== */
+header {
+  background-color: #111;
+  color: white;
+  padding: 25px 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* ====== NAV ====== */
+nav {
+  background-color: #222;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 0 18px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff9900;
+}
+
+/* ====== MAIN ====== */
+main {
+  max-width: 1200px;
+  margin: 30px auto 60px;
+  padding: 0 15px;
+}
+
+/* ====== SECCIONES ====== */
+.presentacion, .historia, section {
+  background-color: white;
+  padding: 30px 25px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.presentacion p, .historia p, section p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* ====== PRODUCTOS - GRID ====== */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 450px; /* altura uniforme */
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding: 18px 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.producto img {
+  width: 100%;
+  max-width: 300px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.producto h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.producto p {
+  font-weight: 700;
+  color: black;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.producto button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
+  background-color: #e65c00;
+}
+
+/* ====== CARRITO ====== */
+.carrito {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.carrito h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.total {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.total h3 {
+  font-size: 1.4rem;
+  color: #111;
+}
+
+.total button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.total button:hover {
+  background-color: #1e8449;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+/* ====== RESPONSIVO ====== */
+@media (max-width: 1024px) {
+  main {
+    padding: 0 20px;
+  }
+
+  .presentacion, .historia, section {
+    padding: 25px 20px;
+    margin: 20px 0;
+  }
+
+  .productos {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  nav li {
+    margin: 5px 0;
+  }
+
+  .producto img {
+    height: 200px;
+  }
+
+  .producto h3, .producto p {
+    font-size: 1rem;
+  }
+
+  .total h3, .total button {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 15px;
+  }
+
+  .presentacion, .historia, section {
+    padding: 20px 15px;
+    margin: 15px 0;
+  }
+
+  .productos {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .producto img {
+    height: 180px;
+  }
+
+  .producto h3, .producto p {
+    font-size: 0.95rem;
+  }
+
+  .total h3, .total button {
+    font-size: 1rem;
+  }
+
+  header img {
+    max-width: 120px;
+  }
+}
+
+
