@@ -1,0 +1,302 @@
+/* ====== VARIABLES ====== */
+$color-fondo: #f9f9f9;
+$color-texto: #333;
+$color-header: #111;
+$color-acento: #ff6600;
+$fuente-principal: 'Comic Sans', Tahoma, Geneva, Verdana, sans-serif;
+$radio-borde: 12px;
+
+/* ====== PLACEHOLDERS (extend) ====== */
+%text-center {
+  text-align: center;
+}
+
+%rounded {
+  border-radius: $radio-borde;
+}
+
+/* ====== MIXINS ====== */
+@mixin boton($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  border: none;
+  padding: 10px 22px;
+  font-weight: 700;
+  border-radius: $radio-borde;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($bg, 10%);
+  }
+}
+
+/* ====== ANIMACIONES ====== */
+@keyframes subir {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* ====== RESET Y BOX-SIZING ====== */
+*{ 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ====== BODY ====== */
+body {
+  font-family: $fuente-principal;
+  background-color: $color-fondo;
+  color: $color-texto;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ====== HEADER ====== */
+header {
+  background-color: $color-header;
+  color: white;
+  padding: 25px 15px;
+  @extend %text-center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+  img {
+    max-width: 150px;
+    height: auto;
+  }
+}
+
+/* ====== NAV ====== */
+nav {
+  background-color: darken($color-header, 5%);
+
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 12px 0;
+    flex-wrap: wrap;
+
+    li {
+      margin: 0 18px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $color-acento;
+        }
+      }
+    }
+  }
+}
+
+/* ====== MAIN ====== */
+main {
+  max-width: 1200px;
+  margin: 30px auto 60px;
+  padding: 0 15px;
+}
+
+/* ====== SECCIONES ====== */
+.presentacion, .historia, section {
+  background-color: white;
+  padding: 30px 25px;
+  margin-bottom: 40px;
+  @extend %rounded;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  p {
+    font-size: 1.1rem;
+    color: $color-texto;
+    line-height: 1.7;
+    text-align: justify;
+  }
+}
+
+h1, h2, h3 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* ====== PRODUCTOS - GRID ====== */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+
+  .producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 450px;
+    background: lighten($color-fondo, 3%);
+    padding: 18px 15px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @extend %rounded;
+    animation: subir 2s infinite;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: $color-header;
+    }
+
+    p {
+      font-weight: 700;
+      color: black;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    button {
+      @include boton($color-acento, white);
+    }
+  }
+}
+
+/* ====== CARRITO ====== */
+.carrito {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: lighten($color-fondo, 5%);
+  @extend %rounded;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  h1 {
+    @extend %text-center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: $color-texto;
+  }
+
+  .total {
+    text-align: right;
+    margin-top: 30px;
+
+    h3 {
+      font-size: 1.4rem;
+      color: $color-header;
+    }
+
+    button {
+      @include boton(#27ae60, white);
+    }
+  }
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background-color: $color-header;
+  color: white;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  @extend %text-center;
+}
+
+/* ====== RESPONSIVO ====== */
+@media (max-width: 1024px) {
+  main {
+    padding: 0 20px;
+  }
+
+  .presentacion, .historia, section {
+    padding: 25px 20px;
+    margin: 20px 0;
+  }
+
+  .productos {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    li {
+      margin: 5px 0;
+    }
+  }
+
+  .producto {
+    img {
+      height: 200px;
+    }
+
+    h3, p {
+      font-size: 1rem;
+    }
+  }
+
+  .total {
+    h3, button {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 15px;
+  }
+
+  .presentacion, .historia, section {
+    padding: 20px 15px;
+    margin: 15px 0;
+  }
+
+  .productos {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .producto {
+    img {
+      height: 180px;
+    }
+
+    h3, p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .total {
+    h3, button {
+      font-size: 1rem;
+    }
+  }
+
+  header {
+    img {
+      max-width: 120px;
+    }
+  }
+}
