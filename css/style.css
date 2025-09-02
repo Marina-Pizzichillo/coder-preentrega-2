@@ -170,6 +170,14 @@ h1, h2, h3 {
   font-size: 2rem;
   color: #333;
 }
+.carrito .producto img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 .carrito .total {
   text-align: right;
   margin-top: 30px;
@@ -249,6 +257,10 @@ footer {
   }
   .producto h3, .producto p {
     font-size: 0.95rem;
+  }
+  .carrito .producto img {
+    max-width: 100%;
+    height: auto;
   }
   .total h3, .total button {
     font-size: 1rem;
